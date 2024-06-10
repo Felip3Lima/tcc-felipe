@@ -1,95 +1,90 @@
+'use client'
+
+import { useRef } from "react";
+
 import Image from "next/image";
 import styles from "./page.module.css";
+import Link from 'next/link';
 
 export default function Home() {
+
+  const targetRef = useRef(null);
+
+  const handleScroll = () => {
+    if (targetRef.current) {
+      targetRef.current.scrollIntoView ({ behavior: 'smooth'});
+    }
+  };
+
   return (
     <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+      <div className={styles.header}>
+        <div className={styles.logo}>
+          <Image
+            className={styles.icon}
+            src="/logotcc.png"
+            width={500}
+            height={500}
+            alt="Imagem do logo"
+          />
+          <h1 className={styles.txtLog}>Consult Doctor</h1>
+        </div>
+        <div className={styles.navBar}>
+          <button className={styles.link} onClick={handleScroll}>SAC</button>
+          <button className={styles.link}>Configurações</button>
+          <Link href="/usuarios/login" className={styles.bLogin}>Login</Link>
+          <Link href="/usuarios/cadCliente" className={styles.bLogin}>Cadastro</Link>
         </div>
       </div>
 
-      <div className={styles.center}>
+      <div className={styles.container}>
         <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          className={styles.backgroundContainer}
+          src="/imgContainer.png"
+          width={500}
+          height={500}
+          alt="foto de uma médica"
         />
+        <Image
+          className={styles.logoContainer}
+          src="/logoContainer.png"
+          width={500}
+          height={500}
+          alt="Imagem do logo na frente da foto da médica"
+        />
+
+        <div className={styles.caixa}>
+          <p className={styles.caixaText}>Consult Doctor é um site que permite agendar consultas médicas online de forma rápida e fácil. Os usuários podem escolher entre uma variedade de especialidades, ver a disponibilidade de horários em tempo real. O site também fornece informações detalhadas sobre os médicos e envia lembretes automáticos de consulta. É uma solução conveniente para acessar cuidados médicos de qualidade sem sair de casa.</p>
+        </div>
+
+        <div className={styles.caixaTitulo}>
+          <p className={styles.titleText}>SOBRE NÓS</p>
+        </div>
       </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+      <div className={styles.main}>
+        <div className={styles.ajuda}>
+          <p className={styles.textAjuda} ref={targetRef}> Olá, como podemos te ajudar?</p>
+        </div>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+        <div className={styles.caixaContainer}>
+          <div className={styles.caixa1}>
+            <p className={styles.titleBox1}>Fale conosco</p>
+            <p className={styles.textBox1}>Telefone: (14) 99887766<br /><br />Whatsapp: (14) 99887766<br /><br />E-mail: beta@gmail.com</p>
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
+          <div className={styles.caixa2}>
+            <p className={styles.titleBox2}>Duvidas frequentes</p>
+            <button className={styles.butDuvidas}>Duvidas sobre cadastro</button>
+            <button className={styles.butDuvidas}>Duvidas sobre pagamentos</button>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+            
+          </div>
+        </div>
       </div>
+      <footer className={styles.roda}>
+                &copy; 2024 ConsultDoctor.com - Todos os direitos reservados
+          </footer>
     </main>
   );
 }
